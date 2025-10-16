@@ -4,9 +4,10 @@
 :root { color-scheme: dark; }
 html,body,#root{height:100%;}
 body{
-  background: radial-gradient(1200px 800px at 20% -10%, #0f1734 0%, transparent 60%),
-              radial-gradient(1200px 800px at 120% 120%, #0c1330 0%, transparent 60%),
-              var(--color-bg);
+  background:
+    radial-gradient(1400px 900px at 20% -10%, #111b49 0%, transparent 60%),
+    radial-gradient(1200px 800px at 120% 120%, #0d163f 0%, transparent 60%),
+    var(--color-bg);
   color:var(--color-text);
   font-family:var(--font-body);
 }
