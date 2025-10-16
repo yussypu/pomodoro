@@ -1,3 +1,4 @@
+// src/components/CafeScene.jsx
 import React from "react";
 
 export default function CafeScene({ mode }) {
@@ -5,8 +6,8 @@ export default function CafeScene({ mode }) {
     mode === "focus"
       ? "from-cyan-400/25 to-fuchsia-300/10"
       : mode === "shortBreak"
-      ? "from-amber-300/25 to-pink-300/12"
-      : "from-violet-300/25 to-cyan-300/12";
+      ? "from-amber-300/20 to-pink-300/10"
+      : "from-violet-300/22 to-cyan-300/10";
 
   return (
     <div className="w-full mx-auto max-w-5xl px-4">
@@ -17,15 +18,13 @@ export default function CafeScene({ mode }) {
           style={{ boxShadow: "inset 0 0 80px rgba(0,0,0,.35)" }}
         >
           {/* Stars (very subtle) */}
-          <div className="absolute inset-0">
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage:
-                  "radial-gradient(2px 2px at 20% 30%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 70% 60%, #fff 50%, transparent 51%)",
-              }}
-            />
-          </div>
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage:
+                "radial-gradient(2px 2px at 20% 30%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 70% 60%, #fff 50%, transparent 51%)",
+            }}
+          />
 
           {/* INLINE skyline */}
           <svg
@@ -58,47 +57,23 @@ export default function CafeScene({ mode }) {
               <rect x="990" y="150" width="44" height="170" rx="6" />
               <rect x="1060" y="130" width="50" height="190" rx="6" />
             </g>
-            <g stroke="#bcd1ff" strokeOpacity="0.35" strokeLinecap="round">
-              <path d="M200 40c60 20 120 20 180 0" />
-              <path d="M860 60c50 15 100 15 150 0" />
-            </g>
           </svg>
 
-          {/* Weather layer by mode */}
+          {/* Weather layer (no stripes) */}
           <div
-            className={`absolute inset-0 transition-opacity duration-700 ${
-              mode === "focus" ? "opacity-70" : mode === "shortBreak" ? "opacity-90" : "opacity-80"
-            }`}
+            className="absolute inset-0 transition-opacity duration-700"
             style={{
+              opacity: mode === "shortBreak" ? 0.85 : 0.7,
               background:
                 mode === "focus"
-                  ? "radial-gradient(120% 80% at 50% 20%, rgba(122,209,255,.08), transparent 60%)"
+                  ? "radial-gradient(120% 80% at 50% 18%, rgba(122,209,255,.10), transparent 60%)"
                   : mode === "shortBreak"
-                  ? "repeating-linear-gradient(180deg, rgba(198,183,255,.12) 0 2px, transparent 2px 8px)"
-                  : "radial-gradient(80% 80% at 60% 0%, rgba(198,183,255,.14), transparent 60%)",
+                  ? "radial-gradient(100% 60% at 20% -10%, rgba(255,220,180,.12), transparent 60%), radial-gradient(120% 80% at 80% -10%, rgba(255,170,220,.10), transparent 60%)"
+                  : "radial-gradient(90% 70% at 60% 0%, rgba(198,183,255,.16), transparent 60%)",
             }}
           />
         </div>
-
-        {/* Desk + mug with steam */}
-        <div className="mt-5 relative">
-          <div className="h-[2px] w-full bg-white/12 rounded" />
-          <div className="absolute right-4 -top-6">
-            <div className="relative w-12 h-12 rounded-full bg-white/6 border border-white/12" />
-            {/* steam */}
-            <div
-              aria-hidden
-              className="absolute -left-2 -top-5 w-3 h-10"
-              style={{
-                background:
-                  "radial-gradient(50% 60% at 50% 30%, rgba(255,255,255,.45), transparent 70%)",
-                filter: "blur(2px)",
-                animation: "breathe var(--anim-breathe)",
-                opacity: 0.6,
-              }}
-            />
-          </div>
-        </div>
+        {/* (Removed desk line + mug to kill the circle + line artifacts) */}
       </div>
     </div>
   );
