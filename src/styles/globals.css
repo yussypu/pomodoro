@@ -1,0 +1,25 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root { color-scheme: dark; }
+html,body,#root{height:100%;}
+body{
+  background: radial-gradient(1200px 800px at 20% -10%, #0f1734 0%, transparent 60%),
+              radial-gradient(1200px 800px at 120% 120%, #0c1330 0%, transparent 60%),
+              var(--color-bg);
+  color:var(--color-text);
+  font-family:var(--font-body);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Utilities */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+  border: 1px solid rgba(122,209,255,.12);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
