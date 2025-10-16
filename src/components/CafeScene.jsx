@@ -1,5 +1,4 @@
 import React from "react";
-import skyline from "../assets/img/skyline.svg";
 
 export default function CafeScene({ mode }) {
   const tint =
@@ -19,26 +18,56 @@ export default function CafeScene({ mode }) {
         >
           {/* Stars (very subtle) */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 opacity-20"
-                 style={{ backgroundImage: "radial-gradient(2px 2px at 20% 30%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 70% 60%, #fff 50%, transparent 51%)" }}/>
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage:
+                  "radial-gradient(2px 2px at 20% 30%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 70% 60%, #fff 50%, transparent 51%)",
+              }}
+            />
           </div>
 
-          {/* Skyline */}
-          <img
-            src={skyline}
-            alt=""
+          {/* INLINE skyline */}
+          <svg
+            viewBox="0 0 1200 360"
             className="absolute inset-x-0 bottom-0 w-full opacity-80"
             style={{ mixBlendMode: "screen" }}
-          />
+            aria-hidden
+          >
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#7ad1ff" stopOpacity="0.25" />
+                <stop offset="1" stopColor="#c6b7ff" stopOpacity="0.12" />
+              </linearGradient>
+            </defs>
+            <rect width="1200" height="360" fill="url(#g)" />
+            <g fill="#9fb7ff" opacity="0.35">
+              <rect x="60" y="180" width="28" height="140" rx="4" />
+              <rect x="110" y="160" width="40" height="160" rx="6" />
+              <rect x="170" y="120" width="50" height="200" rx="6" />
+              <rect x="250" y="200" width="36" height="120" rx="6" />
+              <rect x="310" y="150" width="42" height="170" rx="6" />
+              <rect x="390" y="100" width="60" height="220" rx="8" />
+              <rect x="480" y="140" width="46" height="180" rx="6" />
+              <rect x="550" y="80" width="70" height="240" rx="8" />
+              <rect x="640" y="190" width="36" height="130" rx="6" />
+              <rect x="700" y="120" width="52" height="200" rx="6" />
+              <rect x="770" y="150" width="44" height="170" rx="6" />
+              <rect x="840" y="90" width="64" height="230" rx="8" />
+              <rect x="930" y="180" width="38" height="140" rx="6" />
+              <rect x="990" y="150" width="44" height="170" rx="6" />
+              <rect x="1060" y="130" width="50" height="190" rx="6" />
+            </g>
+            <g stroke="#bcd1ff" strokeOpacity="0.35" strokeLinecap="round">
+              <path d="M200 40c60 20 120 20 180 0" />
+              <path d="M860 60c50 15 100 15 150 0" />
+            </g>
+          </svg>
 
-          {/* Weather layer based on mode */}
+          {/* Weather layer by mode */}
           <div
             className={`absolute inset-0 transition-opacity duration-700 ${
-              mode === "focus"
-                ? "opacity-70"
-                : mode === "shortBreak"
-                ? "opacity-90"
-                : "opacity-80"
+              mode === "focus" ? "opacity-70" : mode === "shortBreak" ? "opacity-90" : "opacity-80"
             }`}
             style={{
               background:
